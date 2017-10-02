@@ -5,38 +5,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
-import java.net.URL;
 import java.util.Calendar;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class Post {
+@Entity
+public class Comment {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private String title;
-    private URL url;
+    private Integer userId;
+    private Integer parentCommentId;
     private String textContent;
     private Integer points;
-    private Integer userId;
-    private Timestamp postDate;
+    private Timestamp date;
 
     // Necessary for JPA
-    protected Post() {};
+    protected Comment() {};
 
-    public Post(String title, URL url, String textContent, int userId) {
-        this.title = title;
-        this.url = url;
+    public Comment(Integer userId, Integer parentCommentId, String textContent) {
         this.textContent = textContent;
         this.userId = userId;
+        this.parentCommentId = parentCommentId;
 
         // Gets the current time
-        this.postDate = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+        this.date = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
         this.points = 0;
     }
 
     @Override
     public String toString() {
-        return "POST";
+        return "COMMENT";
     }
 
 

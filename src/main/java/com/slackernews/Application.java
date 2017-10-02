@@ -1,7 +1,7 @@
 package com.slackernews;
 
 import com.slackernews.model.Post;
-import com.slackernews.repository.PostRepository;
+import com.slackernews.repository.IPostRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,7 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo(PostRepository repository) {
+    public CommandLineRunner demo(IPostRepository repository) {
         return (args) -> {
             URL url = new URL("https://google.com");
             repository.save(new Post("Sample title", url, "sample content", 1));

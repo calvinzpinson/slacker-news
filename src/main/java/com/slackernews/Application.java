@@ -1,7 +1,8 @@
 package com.slackernews;
 
 import com.slackernews.model.Post;
-import com.slackernews.repository.IPostRepository;
+import com.slackernews.model.User;
+import com.slackernews.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,21 +23,23 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo(IPostRepository repository) {
+    public CommandLineRunner demo(IPostRepository postRepository, IUserRepository userRepository) {
         return (args) -> {
             URL url = new URL("https://google.com");
-            repository.save(new Post("Sample title", url, "sample content", 1));
+            User user = new User("NAME", "PASSWORD");
+            userRepository.save(user);
+            postRepository.save(new Post("Sample title", url, "sample content", user));
 
             // fetch all posts
             log.info("Posts found with findAll():");
             log.info("-------------------------------");
-            for (Post post : repository.findAll()) {
+            for (Post post : postRepository.findAll()) {
                 log.info(post.toString());
             }
             log.info("");
 
             // fetch an individual post by Id
-            Post post = repository.findOne(1);
+            Post post = postRepository.findOne(1);
             log.info("Customer found with findOne(1):");
             log.info("--------------------------------");
             log.info(post.toString());

@@ -1,29 +1,24 @@
 package com.slackernews.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
 @Entity
 public class Comment {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private Integer userId;
     private Integer parentCommentId;
     private String textContent;
     private Integer points;
     private Timestamp date;
+    private User commenter;
 
     // Necessary for JPA
     protected Comment() {};
 
-    public Comment(Integer userId, Integer parentCommentId, String textContent) {
+    public Comment(User commenter, Integer parentCommentId, String textContent) {
         this.textContent = textContent;
-        this.userId = userId;
+        this.commenter = commenter;
         this.parentCommentId = parentCommentId;
 
         // Gets the current time
@@ -31,10 +26,29 @@ public class Comment {
         this.points = 0;
     }
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "User_id")
+    public User getCommenter() {
+        return commenter;
+    }
+
+    public void setCommenter(User commenter) {
+        this.commenter = commenter;
+    }
+
     @Override
     public String toString() {
         return "COMMENT";
     }
-
 
 }

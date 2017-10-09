@@ -30,6 +30,13 @@ public class Post {
         this.points = 0;
     }
 
+
+    @Override
+    public String toString() {
+        return "POST";
+    }
+
+    //region Getters and Setters
     @Id // indicates primary key
     @GeneratedValue(strategy=GenerationType.AUTO)
     public Integer getId() {
@@ -38,6 +45,38 @@ public class Post {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public URL getURL() {
+        return url;
+    }
+
+    public void setURL(URL url) {
+        this.url = url;
+    }
+
+    public String getTextContent() {
+        return this.textContent;
+    }
+
+    public void setTextContent(String textContent) {
+        this.textContent = textContent;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 
     @ManyToOne
@@ -49,11 +88,7 @@ public class Post {
     public void setPoster(User poster) {
         this.poster = poster;
     }
-
-    @Override
-    public String toString() {
-        return "POST";
-    }
+    //endregion
 
 
 }

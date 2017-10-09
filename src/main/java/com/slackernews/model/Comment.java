@@ -26,6 +26,12 @@ public class Comment {
         this.points = 0;
     }
 
+    @Override
+    public String toString() {
+        return "COMMENT";
+    }
+
+    //region Getters and Setters
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     public Integer getId() {
@@ -34,6 +40,38 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getParentCommentId() {
+        return parentCommentId;
+    }
+
+    public void setParentCommentId(Integer parentCommentId) {
+        this.parentCommentId = parentCommentId;
+    }
+
+    public String getTextContent() {
+        return this.textContent;
+    }
+
+    public void setTextContent(String textContent) {
+        this.textContent = textContent;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public Timestamp getDate() {
+        return this.date;
+    }
+
+    public void setDate(Timestamp timestamp) {
+        this.date = timestamp;
     }
 
     @ManyToOne
@@ -45,10 +83,6 @@ public class Comment {
     public void setCommenter(User commenter) {
         this.commenter = commenter;
     }
-
-    @Override
-    public String toString() {
-        return "COMMENT";
-    }
+    //endregion
 
 }

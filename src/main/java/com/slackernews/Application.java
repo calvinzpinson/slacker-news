@@ -26,7 +26,7 @@ public class Application {
     public CommandLineRunner demo(IPostRepository postRepository, IUserRepository userRepository) {
         return (args) -> {
             URL url = new URL("https://google.com");
-            User user = new User("NAME", "PASSWORD");
+            User user = new User("NAME", "EMAIL", "PASSWORD");
             userRepository.save(user);
             postRepository.save(new Post("Sample title", url, "sample content", user));
 

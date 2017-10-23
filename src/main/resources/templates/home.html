@@ -70,7 +70,7 @@
                             <tr>
                                 <td colspan="2"></td>
                                 <td class="subtext">
-                                    <span class="score" id="score_${post.getId()}" th:text="${post.getPoints() + ' points'}"></span>
+                                    <span class="score" th:id="${'score_' + post.getId()}" th:text="${post.getPoints() + ' points'}"></span>
                                      by
                                     <a href="" class="hnuser" th:text="${post.getPoster()}"></a>
                                     <span class="age">
@@ -91,4 +91,5 @@
 </table>
 </center>
 </body>
+<script type='text/javascript' src='/javascript/home.js'></script>
 </html>

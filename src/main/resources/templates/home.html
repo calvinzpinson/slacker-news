@@ -11,7 +11,7 @@
 <body>
 <center>
 
-<table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="=#f6f6ef">
+<table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
     <tbody>
         <tr>
             <td bgcolor="#ff6600">
@@ -52,36 +52,36 @@
                 <table border="0" cellpadding="0" cellspacing="0" class="itemList">
                     <tbody>
                         <th:block th:each="post : ${posts}">
-                            <tr class="athing" id="${post.getId()}">
+                            <tr class="athing" th:id="${post.getId()}">
                                 <td align="right" valign="top" class="title">
                                     <span class="rank"></span>
                                 </td>
                                 <td valign="top" class="voteLinks">
                                     <center>
-                                        <a id="up_${post.getId()}" href="vote?id=${post.getId()}&how=up&goto=news">
+                                        <a th:id="${post.getId()}" href="">
                                             <div class="votearrow" title="upvote"></div>
                                         </a>
                                     </center>
                                 </td>
                                 <td class="title">
-                                    <a href="${post.getURL()}" class="storyLink">${post.getTitle()}</a>
+                                    <a th:href="${post.getURL()}" class="storyLink" th:text="${post.getTitle()}"></a>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td class="subtext">
-                                    <span class="score" id="score_${post.getId()}"> ${post.getPoints()} points</span>
+                                    <span class="score" id="score_${post.getId()}" th:text="${post.getPoints() + ' points'}"></span>
                                      by
-                                    <a href="user?id={post.getPoster()}" class="hnuser">${post.getPoster()}</a>
+                                    <a href="" class="hnuser" th:text="${post.getPoster()}"></a>
                                     <span class="age">
-                                        <a href="item?id=$(post.getId()}"> X Hours Ago</a>
+                                        <a href=""> X Hours Ago</a>
                                     </span>
                                      |
-                                    <a href="item?id=$(post.getId()}"> X Comments</a>
+                                    <a href=""> X Comments</a>
                                 </td>
                             </tr>
                             <tr class="spacer" style="height:5px"></tr>
-                        </th:block>th:block>
+                        </th:block>
                     </tbody>
                 </table>
             </td>

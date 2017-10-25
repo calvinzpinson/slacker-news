@@ -4,6 +4,39 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<b>Create Account</b>
+<br></br>
+<br></br>
+<form role="form" action="#" th:action="@/user/create" th:object="${form}" method="post">
+    <input type="hidden" name="goto" value="news"></input>
+    <input type="hidden" name="creating" value="t"></input>
+    <table border="0">
+        <tbody>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" th:field="*{username}" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text" th:field="*{password}" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+        </tr>
+        <tr>
+            <td>verify password:</td>
+            <td><input type="text" th:field="*{passwordRepeated}" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td th:if="${#fields.hasErrors('passwordRepeated')}" th:errors="*{passwordRepeated}">Password Matching Error</td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="text" th:field="*{email} name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Password Error</td>
+        </tr>
+        </tbody>
+    </table>
+    <br></br>
+    <input type="submit" value="create account"></input>
+</form>
 <body>
 
 </body>

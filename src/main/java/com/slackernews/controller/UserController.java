@@ -53,7 +53,7 @@ public class UserController {
             bindingResult.reject("username.exists", "That username is already taken");
             return "user_create";
         }
-        return "redirect:/home";//TODO: custom redirect?
+        return "redirect:/";//TODO: custom redirect?
     }
 
 }

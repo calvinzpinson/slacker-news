@@ -29,6 +29,10 @@ public class UserCreationForm {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -49,6 +53,7 @@ public class UserCreationForm {
     public String toString() {
         return "UserCreateForm{" +
                 "email='" + email.replaceFirst("@.+", "@***") + '\'' +
+                ", username=***" + '\'' +
                 ", password=***" + '\'' +
                 ", passwordRepeated=***" + '\'' +
                 '}';

@@ -25,6 +25,7 @@ public class UserCreationFormValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserCreationForm form = (UserCreationForm) target;
+        validateUsername(errors, form);
         validatePasswords(errors, form);
         validateEmail(errors, form);
     }

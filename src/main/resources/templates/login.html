@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"></meta>
     <title>Log in</title>
 </head>
 <body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-    </ul>
-</nav>
-
-<h1>Log in</h1>
-
-<p>You can use: demo@localhost / demo</p>
-
+<b>Login</b>
+<br></br>
+<br></br>
 <form role="form" action="/login" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-    <div>
-        <label for="email">Email address</label>
-        <input type="email" name="email" id="email" required autofocus/>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required/>
-    </div>
-    <div>
-        <label for="remember-me">Remember me</label>
-        <input type="checkbox" name="remember-me" id="remember-me"/>
-    </div>
-    <button type="submit">Sign in</button>
+    <input type="hidden" name="goto" value="news"></input>
+    <table border="0">
+        <tbody>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+        </tr>
+        </tbody>
+    </table>
+    <br></br>
+    <input type="submit" value="login"></input>
 </form>
-
-<#if error.isPresent()>
-    <p>The email or password you have entered is invalid, try again.</p>
-</#if>
+<br></br>
+<a href="forgot">Forgot your password?</a>
+<br></br>
+<br></br>
+<b>Create Account</b>
+<br></br>
+<br></br>
+<form role="form" action="/user/create" method="post">
+    <input type="hidden" name="goto" value="news"></input>
+    <input type="hidden" name="creating" value="t"></input>
+    <table border="0">
+        <tbody>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+        </tr>
+        </tbody>
+    </table>
+    <br></br>
+    <input type="submit" value="create account"></input>
+</form>
 </body>
 </html>

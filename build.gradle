@@ -43,5 +43,7 @@ dependencies {
     //The templating engine
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
+    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

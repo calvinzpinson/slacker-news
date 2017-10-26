@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"></meta>
     <title>Log in</title>
@@ -21,14 +20,14 @@
             <td>password:</td>
             <td><input type="text" name="password" id="password" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
         </tr>
-        <tr th:if="${param.error}">
-            Invalid username and password.
-        </tr>
         </tbody>
     </table>
     <br></br>
     <input type="submit" value="login"></input>
 </form>
+<p th:if="${error}" class="error">
+    Invalid username and password.
+</p>
 <br></br>
 <a href="forgot">Forgot your password?</a>
 <br></br>

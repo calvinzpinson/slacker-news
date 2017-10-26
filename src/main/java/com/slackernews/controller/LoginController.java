@@ -16,20 +16,6 @@ import java.util.Optional;
 @Controller
 public class LoginController {
 
-    private final UserService userService;
-    private final UserCreationFormValidator userCreateFormValidator;
-
-    @Autowired
-    public LoginController(UserService userService, UserCreationFormValidator userCreationFormValidator) {
-        this.userService = userService;
-        this.userCreateFormValidator = userCreationFormValidator;
-    }
-
-    @InitBinder("form")
-    public void initBinder(WebDataBinder binder) {
-        binder.addValidators(userCreateFormValidator);
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
         return new ModelAndView("login", "error", error);

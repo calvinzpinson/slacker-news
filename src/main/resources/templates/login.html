@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8"></meta>
     <title>Log in</title>
+
 </head>
 <body>
 <b>Login</b>
 <br></br>
 <br></br>
-<form role="form" action="/login" method="post">
-    <input type="hidden" name="goto" value="news"></input>
+<form role="form" th:action="@{/login}" method="post">
     <table border="0">
         <tbody>
         <tr>
             <td>username:</td>
-            <td><input type="text" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td><input type="text" name="username" id="username" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
         </tr>
         <tr>
             <td>password:</td>
-            <td><input type="text" name="acct" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td><input type="text" name="password" id="password" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+        </tr>
+        <tr th:if="${param.error}">
+            Invalid username and password.
         </tr>
         </tbody>
     </table>
@@ -33,8 +37,6 @@
 <br></br>
 <br></br>
 <form role="form" action="/user/create" method="post">
-    <input type="hidden" name="goto" value="news"></input>
-    <input type="hidden" name="creating" value="t"></input>
     <table border="0">
         <tbody>
         <tr>

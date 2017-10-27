@@ -35,11 +35,13 @@
                                      |
                                     <a href="newcomments">comments</a>
                                      |
-                                    <a href="submit">submit</a>
+                                    <a th:href="@{/submit}">submit</a>
                                 </span>
                             </td>
                             <td style="text-align:right; padding-right:4px">
                                 <span sec:authorize="isAuthenticated()" class="pagetop">
+                                    <a th:href="@{/user/details}" th:text="${#authentication.getPrincipal().getUser().getUsername()}"></a>
+                                    |
                                     <a href="javascript: document.logoutForm.submit()" role="menuitem">logout</a>
                                 </span>
                                 <span sec:authorize="isAnonymous()" class="pagetop">

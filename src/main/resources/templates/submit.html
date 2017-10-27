@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Submit | Slacker News</title>
+    <meta name="referrer" content="origin"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <link rel="stylesheet" type="text/css" href="/css/home.css"></link>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"></link>
+</head>
+<body>
+<center>
+    <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+        <tbody>
+        <tr>
+            <td bgcolor="#ff6600">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+                    <tbody>
+                    <tr>
+                        <td style="width:18px;padding-right:4px">
+                            <a href="https://news.ycombinator.com">
+                                <img src="/images/s18.png" width="18" height="18"
+                                     style="border:1px white solid;"/>
+                            </a>
+                        </td>
+                        <td style="line-height:12pt; height:10px">
+                                <span class="pagetop">
+                                    <b class="hnname">
+                                        <a href="news">Submit</a>
+                                    </b>
+                                </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr style="height:10px"></tr>
+        <tr>
+            <td>
+                <table border="0">
+                    <tbody>
+                    <tr>
+                        <td>title</td>
+                        <td>
+                            <input type="text" name="title" id="title" size="50" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off" oninput="tlen(this)" onfocus="tlen(this)"></input>
+                            <span style="margin-left:10px"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="url" id="url" size="50" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>or</b></td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>
+                            <textarea name="text" rows="4" cols="49"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="submit"></input>
+                        </td>
+                    </tr>
+                    <tr style="height:20px"></tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            "Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the thread"
+                            <br></br>
+                            <br></br>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</center>
+</body>
+<script type='text/javascript' src='/javascript/home.js'></script>
+</html>

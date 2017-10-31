@@ -1,11 +1,19 @@
 package com.slackernews.service.Implementation;
 
 import com.slackernews.model.Post;
+import com.slackernews.model.PostCreationForm;
+import com.slackernews.model.User;
+import com.slackernews.model.UserCreationForm;
 import com.slackernews.repository.IPostRepository;
 import com.slackernews.service.Interface.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +33,17 @@ public class PostService implements IPostService {
 
     public List<Post> getAllPosts() {
         return postRepository.findAll();
+    }
+
+    @Override
+    public Post create(PostCreationForm form, User user) throws MalformedURLException {
+        String title = form.getTitle();
+        //TODO: if url is blank, the url should be to the post/comments page. Set up this logic.
+        URL url = new URL(form.getUrl());
+        String text = form.getText();
+
+        Post post = new Post(title, url, text, user);
+
+        return postRepository.save(post);
     }
 }

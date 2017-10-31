@@ -38,51 +38,58 @@
         <tr style="height:10px"></tr>
         <tr>
             <td>
-                <table border="0">
-                    <tbody>
-                    <tr>
-                        <td>title</td>
-                        <td>
-                            <input type="text" name="title" id="title" size="50" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off" oninput="tlen(this)" onfocus="tlen(this)"></input>
-                            <span style="margin-left:10px"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" name="url" id="url" size="50" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><b>or</b></td>
-                    </tr>
-                    <tr>
-                        <td>text</td>
-                        <td>
-                            <textarea name="text" rows="4" cols="49"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" value="submit"></input>
-                        </td>
-                    </tr>
-                    <tr style="height:20px"></tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            "Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the thread"
-                            <br></br>
-                            <br></br>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <form method="post" th:action="@{/submit}" th:object="${form}">
+                    <script type="text/javascript">
+                        function tlen(el) {var n=el.value.length - 80;
+                            el.nextSibling.innerText = n > 0 ? n + ' too long' : ''; }
+                    </script>
+                    <table border="0">
+                        <tbody>
+                        <tr>
+                            <td>title</td>
+                            <td>
+                                <input th:field="*{title}" type="text" name="title" id="title" size="50" oninput="tlen(this)" onfocus="tlen(this)"></input>
+                                <span style="margin-left:10px"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>
+                                <input th:field="*{url}" type="text" name="url" id="url" size="50" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>or</b></td>
+                        </tr>
+                        <tr>
+                            <td>text</td>
+                            <td>
+                                <textarea th:field="*{text}" name="text" rows="4" cols="49"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="submit"></input>
+                            </td>
+                        </tr>
+                        <tr style="height:20px"></tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the thread
+                                <br></br>
+                                <br></br>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
             </td>
         </tr>
 
@@ -90,5 +97,4 @@
     </table>
 </center>
 </body>
-<script type='text/javascript' src='/javascript/home.js'></script>
 </html>

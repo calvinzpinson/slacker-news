@@ -3,6 +3,7 @@ package com.slackernews.controller;
 import com.slackernews.model.UserCreationForm;
 import com.slackernews.model.Validator.UserCreationFormValidator;
 import com.slackernews.service.Implementation.UserService;
+import com.slackernews.service.Interface.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import java.util.NoSuchElementException;
 @Controller
 public class UserController {
 
-    private final UserService userService;
+    private final IUserService userService;
     private final UserCreationFormValidator userCreateFormValidator;
 
     @Autowired

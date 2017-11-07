@@ -38,8 +38,15 @@ public class PostService implements IPostService {
     @Override
     public Post create(PostCreationForm form, User user) throws MalformedURLException {
         String title = form.getTitle();
-        //TODO: if url is blank, the url should be to the post/comments page. Set up this logic.
-        URL url = new URL(form.getUrl());
+
+        URL url;
+        if (form.getUrl().isEmpty()) {
+            url = new URL("https://google.com"); //TODO: Link to post specific view
+        }
+        else {
+            url = new URL(form.getUrl());
+        }
+
         String text = form.getText();
 
         Post post = new Post(title, url, text, user);

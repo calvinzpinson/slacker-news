@@ -6,7 +6,6 @@ public class PostCreationForm {
     @NotEmpty
     private String title = "";
 
-    @NotEmpty
     private String url = "";
 
     @NotEmpty

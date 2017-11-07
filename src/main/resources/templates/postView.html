@@ -10,11 +10,11 @@
 </head>
 <body>
 <center>
-    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-        <input hidden="true" type="submit" value="Sign Out"/>
-    </form>
-    <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
-        <tbody>
+<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+    <input hidden="true" type="submit" value="Sign Out"/>
+</form>
+<table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+    <tbody>
         <tr>
             <td bgcolor="#ff6600">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
@@ -87,13 +87,22 @@
                             </td>
                         </tr>
                         <tr class="spacer" style="height:5px"></tr>
+                        <tr>
+                            <td>
+                                <form method="post" th:action="@{/submit}" th:object="${form}">
+                                    <textarea name="text" rows="6" cols="60"></textarea>
+                                    <br></br>
+                                    <br></br>
+                                    <input type="submit" value="add comment"></input>
+                                </form>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </td>
         </tr>
-
-        </tbody>
-    </table>
+    </tbody>
+</table>
 </center>
 </body>
 <script type='text/javascript' src='/javascript/home.js'></script>

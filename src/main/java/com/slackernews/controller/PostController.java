@@ -51,7 +51,7 @@ public class PostController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/pos/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public ModelAndView getPostPage(@PathVariable int id) {
         return new ModelAndView("postView", "post", postService.getPostById(id)
                 .orElseThrow(() -> new NoSuchElementException("Post not found")));

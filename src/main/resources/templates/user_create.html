@@ -17,12 +17,12 @@
         </tr>
         <tr>
             <td>password:</td>
-            <td><input type="text" th:field="*{password}" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td><input type="password" th:field="*{password}" size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
         </tr>
         <tr>
             <td>verify password:</td>
-            <td><input type="text" th:field="*{passwordRepeated}"  size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
+            <td><input type="password" th:field="*{passwordRepeated}"  size="20" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="true" autocomplete="off"></input></td>
             <td th:if="${#fields.hasErrors('passwordRepeated')}" th:errors="*{passwordRepeated}">Password Matching Error</td>
         </tr>
         <tr>

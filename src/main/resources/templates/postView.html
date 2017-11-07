@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Post Title | Slacker News</title>
+    <title th:text="${post.getTitle() + ' | Slacker News'}"></title>
     <meta name="referrer" content="origin"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
     <link rel="stylesheet" type="text/css" href="/css/home.css"></link>
@@ -10,6 +10,9 @@
 </head>
 <body>
 <center>
+    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+        <input hidden="true" type="submit" value="Sign Out"/>
+    </form>
     <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
         <tbody>
         <tr>
@@ -26,8 +29,23 @@
                         <td style="line-height:12pt; height:10px">
                                 <span class="pagetop">
                                     <b class="hnname">
-                                        <a href="news">Submit</a>
+                                        <a href="news">Slacker News</a>
                                     </b>
+                                    <a href="newest">new</a>
+                                     |
+                                    <a href="newcomments">comments</a>
+                                     |
+                                    <a th:href="@{/submit}">submit</a>
+                                </span>
+                        </td>
+                        <td style="text-align:right; padding-right:4px">
+                                <span sec:authorize="isAuthenticated()" class="pagetop">
+                                    <a th:href="@{/user/details}" th:text="${#authentication.getPrincipal().getUser().getUsername()}"></a>
+                                    |
+                                    <a href="javascript: document.logoutForm.submit()" role="menuitem">logout</a>
+                                </span>
+                            <span sec:authorize="isAnonymous()" class="pagetop">
+                                    <a th:href="@{/login}">login</a>
                                 </span>
                         </td>
                     </tr>
@@ -38,6 +56,39 @@
         <tr style="height:10px"></tr>
         <tr>
             <td>
+                <table border="0" cellpadding="0" cellspacing="0" class="itemList">
+                    <tbody>
+                        <tr class="athing" th:id="${post.getId()}">
+                            <td align="right" valign="top" class="title">
+                                <span class="rank"></span>
+                            </td>
+                            <td valign="top" class="voteLinks">
+                                <center>
+                                    <a th:id="${post.getId()}" href="">
+                                        <div class="votearrow" title="upvote"></div>
+                                    </a>
+                                </center>
+                            </td>
+                            <td class="title">
+                                <a th:href="${post.getURL()}" class="storyLink" th:text="${post.getTitle()}"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td class="subtext">
+                                <span class="score" th:id="${'score_' + post.getId()}" th:text="${post.getPoints() + ' points'}"></span>
+                                by
+                                <a href="" class="hnuser" th:text="${post.getPoster()}"></a>
+                                <span class="age">
+                                        <a href=""> X Hours Ago</a>
+                                    </span>
+                                |
+                                <a href=""> X Comments</a>
+                            </td>
+                        </tr>
+                        <tr class="spacer" style="height:5px"></tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
 
@@ -45,4 +96,5 @@
     </table>
 </center>
 </body>
+<script type='text/javascript' src='/javascript/home.js'></script>
 </html>

@@ -52,5 +52,6 @@ public class PostService implements IPostService {
         Post post = new Post(title, url, text, user);
 
         return postRepository.save(post);
+
     }
 }

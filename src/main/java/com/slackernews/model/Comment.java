@@ -7,6 +7,7 @@ import java.util.Calendar;
 @Entity
 public class Comment {
     private Integer id;
+    private Post post;
     private Integer parentCommentId;
     private String textContent;
     private Integer points;
@@ -16,10 +17,11 @@ public class Comment {
     // Necessary for JPA
     protected Comment() {};
 
-    public Comment(User commenter, Integer parentCommentId, String textContent) {
+    public Comment(User commenter, Post post, String textContent) {
         this.textContent = textContent;
+        this.post = post;
         this.commenter = commenter;
-        this.parentCommentId = parentCommentId;
+        this.parentCommentId = 0;
 
         // Gets the current time
         this.date = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
@@ -40,6 +42,14 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public Integer getParentCommentId() {

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Post {
@@ -15,6 +16,7 @@ public class Post {
     private Integer points;
     private Timestamp postDate;
     private User poster;
+    private Set<Comment> comments;
 
     // Necessary for JPA
     protected Post() {};
@@ -87,6 +89,15 @@ public class Post {
 
     public void setPoster(User poster) {
         this.poster = poster;
+    }
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
     //endregion
 

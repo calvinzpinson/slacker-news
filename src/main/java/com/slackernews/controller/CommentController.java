@@ -22,7 +22,7 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/comment/submit", method = RequestMethod.POST)
     public String handleCommentCreationForm(String textContent, Post post, Principal principal) {
         User user = ((CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
         commentService.create(user, post, textContent);

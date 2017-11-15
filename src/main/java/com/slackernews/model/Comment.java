@@ -44,6 +44,8 @@ public class Comment {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "post")
     public Post getPost() {
         return post;
     }

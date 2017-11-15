@@ -30,7 +30,8 @@ public class CommentService implements ICommentService {
         return commentRepository.findAll();
     }
 
-    public Comment create(String textContent, User user, Post post) {
+    @Override
+    public Comment create(User user, Post post, String textContent) {
         Comment comment = new Comment(user, post, textContent);
 
         return commentRepository.save(comment);

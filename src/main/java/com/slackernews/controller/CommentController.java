@@ -39,7 +39,7 @@ public class CommentController {
             User user = ((CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
             commentService.create(form, user);
         } catch (Exception e) {
-            bindingResult.reject("", "");
+            bindingResult.reject("invalid.format", "The comment format is incorrect");
             return "/";
         }
         return "redirect:/";

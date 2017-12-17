@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 public class CommentCreationForm {
 
     @NotNull
-    private Integer id;
+    private Integer id = 0;
 
     @NotEmpty
     private String text = "";

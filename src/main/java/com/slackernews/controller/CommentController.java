@@ -40,8 +40,8 @@ public class CommentController {
             commentService.create(form, user);
         } catch (Exception e) {
             bindingResult.reject("invalid.format", "The comment format is incorrect");
-            return "/";
+            return "/login";
         }
-        return "redirect:/";
+        return "/post/1";
     }
 }

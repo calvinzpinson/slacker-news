@@ -92,7 +92,7 @@
                             <td>
                                 <form method="post" th:action="@{/comment/submit}" th:object="${form}">
                                     <textarea type="text" th:field="*{text}" name="textContent" rows="6" cols="60"></textarea>
-                                    <input type="hidden" th:field="*{id}" th:value="${post.getId()}"></input>
+                                    <input type="hidden" name="id" th:value="${post.getId()}"></input>
                                     <br></br>
                                     <br></br>
                                     <input type="submit" value="add comment"></input>

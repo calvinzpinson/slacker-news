@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 import java.net.MalformedURLException;
@@ -31,17 +32,18 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/comment/submit", method = RequestMethod.POST)
-    public String handleCommentCreationForm(@Valid @ModelAttribute("form") CommentCreationForm form, BindingResult bindingResult, Principal principal) {
+    public RedirectView handleCommentCreationForm(@Valid @ModelAttribute("form") CommentCreationForm form, BindingResult bindingResult, Principal principal) {
+        String postUrl = "/post/" + form.getId();
         if (bindingResult.hasErrors()) {
-            return "submit";
+            return new RedirectView(postUrl);
         }
         try {
             User user = ((CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
             commentService.create(form, user);
         } catch (Exception e) {
             bindingResult.reject("invalid.format", "The comment format is incorrect");
-            return "/login";
+            return new RedirectView("/login");
         }
-        return "/post/1";
+        return new RedirectView(postUrl);
     }
 }

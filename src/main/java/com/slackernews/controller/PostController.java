@@ -53,14 +53,6 @@ public class PostController {
         return "redirect:/";
     }
 
-    /*@RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
-    public ModelAndView getPostPage(@PathVariable int id) {
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("form", new CommentCreationForm());
-        model.put("post", postService.getPostById(id).orElseThrow(() -> new NoSuchElementException("Post not found")));
-
-        return new ModelAndView("postView", "model", model);
-    }*/
 
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public String getPostPage(@PathVariable int id, Model model) {

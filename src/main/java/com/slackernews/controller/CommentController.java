@@ -31,7 +31,6 @@ public class CommentController {
         this.postService = postService;
     }
 
-    @RequestMapping(value = "/comment/submit", method = RequestMethod.POST)
     public RedirectView handleCommentCreationForm(@Valid @ModelAttribute("form") CommentCreationForm form, BindingResult bindingResult, Principal principal) {
         String postUrl = "/post/" + form.getId();
         if (bindingResult.hasErrors()) {

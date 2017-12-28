@@ -39,19 +39,25 @@ public class PostService implements IPostService {
     public Post create(PostCreationForm form, User user) throws MalformedURLException {
         String title = form.getTitle();
 
-        URL url;
-        if (form.getUrl().isEmpty()) {
+        URL url = new URL("https://google.com");
+        /*if (form.getUrl().isEmpty()) {
             url = new URL("https://google.com"); //TODO: Link to post specific view
         }
         else {
             url = new URL(form.getUrl());
-        }
+        }*/
 
         String text = form.getText();
 
         Post post = new Post(title, url, text, user);
+        post = postRepository.save(post);
+
+        if (form.getUrl().isEmpty()) {
+            String urlString = "http://localhost:8080/post/" + post.getId().toString();
+            url = new URL(urlString);
+            post.setURL(url);
+        }
 
         return postRepository.save(post);
-
     }
 }

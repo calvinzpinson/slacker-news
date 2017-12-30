@@ -80,7 +80,7 @@
                                 by
                                 <a href="" class="hnuser" th:text="${post.getPoster()}"></a>
                                 <span class="age">
-                                        <a href=""> X Hours Ago</a>
+                                        <a th:text="${post.getPostDate() + ' Hours Ago'}"></a>
                                     </span>
                                 |
                                 <a href="" th:text="${post.getComments().size() + ' Comments'}"></a>

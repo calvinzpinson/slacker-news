@@ -81,6 +81,14 @@ public class Post {
         this.points = points;
     }
 
+    public Timestamp getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Timestamp postDate) {
+        this.postDate = postDate;
+    }
+
     @ManyToOne
     @JoinColumn(name = "User_id")
     public User getPoster() {

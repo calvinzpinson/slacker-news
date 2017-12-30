@@ -29,7 +29,7 @@
                             <td style="line-height:12pt; height:10px">
                                 <span class="pagetop">
                                     <b class="hnname">
-                                        <a href="news">Slacker News</a>
+                                        <a th:href="@{/}">Slacker News</a>
                                     </b>
                                     <a href="newest">new</a>
                                      |
@@ -81,7 +81,7 @@
                                      by
                                     <a href="" class="hnuser" th:text="${post.getPoster()}"></a>
                                     <span class="age">
-                                        <a href=""> X Hours Ago</a>
+                                        <a href="" th:text="${post.getPostDate() + ' Hours Ago'}"></a>
                                     </span>
                                      |
                                     <a th:href="@{/post/} + ${post.getId()}" th:text="${post.getComments().size() + ' Comments'}"></a>

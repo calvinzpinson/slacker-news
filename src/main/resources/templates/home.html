@@ -84,7 +84,7 @@
                                         <a href=""> X Hours Ago</a>
                                     </span>
                                      |
-                                    <a th:href="@{/post/} + ${post.getId()}"> X Comments</a>
+                                    <a th:href="@{/post/} + ${post.getId()}" th:text="${post.getComments().size() + ' Comments'}"></a>
                                 </td>
                             </tr>
                             <tr class="spacer" style="height:5px"></tr>

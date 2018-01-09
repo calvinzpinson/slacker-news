@@ -61,4 +61,9 @@ public class PostController {
         model.addAttribute("post", postService.getPostById(id).orElseThrow(() -> new NoSuchElementException("Post not found")));
         return "postView";
     }
+
+    @RequestMapping(value="/vote", method = RequestMethod.POST)
+    public String vote(@PathVariable int postId, @PathVariable String voteMethod) {
+        return "postView";
+    }
 }

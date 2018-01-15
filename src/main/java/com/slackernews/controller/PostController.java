@@ -1,27 +1,18 @@
 package com.slackernews.controller;
 
-import com.slackernews.model.CommentCreationForm;
-import com.slackernews.model.CurrentUser;
-import com.slackernews.model.PostCreationForm;
-import com.slackernews.model.User;
+import com.slackernews.model.*;
 import com.slackernews.service.Interface.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.MalformedURLException;
 import java.security.Principal;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
 @Controller
@@ -62,8 +53,13 @@ public class PostController {
         return "postView";
     }
 
-    @RequestMapping(value="/vote", method = RequestMethod.POST)
-    public String vote(@PathVariable int postId, @PathVariable String voteMethod) {
+    @RequestMapping(value="/vote", method = RequestMethod.GET)
+    public String vote(@RequestParam("id") int id, Model model) {
+        Post post = postService.getPostById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
+        int currentPoints = post.getPoints();
+        post.setPoints(currentPoints+1);
+        model.addAttribute("form", new CommentCreationForm());
+        model.addAttribute("post", post);
         return "postView";
     }
 }

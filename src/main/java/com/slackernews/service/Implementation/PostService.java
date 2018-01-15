@@ -40,12 +40,6 @@ public class PostService implements IPostService {
         String title = form.getTitle();
 
         URL url = new URL("https://google.com");
-        /*if (form.getUrl().isEmpty()) {
-            url = new URL("https://google.com"); //TODO: Link to post specific view
-        }
-        else {
-            url = new URL(form.getUrl());
-        }*/
 
         String text = form.getText();
 
@@ -53,7 +47,7 @@ public class PostService implements IPostService {
         post = postRepository.save(post);
 
         if (form.getUrl().isEmpty()) {
-            String urlString = "http://localhost:8080/post/" + post.getId().toString();
+            String urlString = "http://localhost:8080/post/" + post.getId().toString(); //TODO: get url stem from environment variable
             url = new URL(urlString);
             post.setURL(url);
         }

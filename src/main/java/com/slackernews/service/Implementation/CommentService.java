@@ -1,21 +1,17 @@
 package com.slackernews.service.Implementation;
 
-import com.slackernews.model.*;
+import com.slackernews.model.Comment;
+import com.slackernews.model.CommentCreationForm;
+import com.slackernews.model.Post;
+import com.slackernews.model.User;
 import com.slackernews.repository.ICommentRepository;
-import com.slackernews.repository.IPostRepository;
 import com.slackernews.service.Interface.ICommentService;
 import com.slackernews.service.Interface.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.Principal;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 public class CommentService implements ICommentService {

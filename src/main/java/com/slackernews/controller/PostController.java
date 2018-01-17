@@ -58,6 +58,7 @@ public class PostController {
         Post post = postService.getPostById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
         int currentPoints = post.getPoints();
         post.setPoints(currentPoints+1);
+        postService.updatePostInfo(post);
         model.addAttribute("form", new CommentCreationForm());
         model.addAttribute("post", post);
         return "postView";

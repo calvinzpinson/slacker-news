@@ -3,17 +3,13 @@ package com.slackernews.service.Implementation;
 import com.slackernews.model.Post;
 import com.slackernews.model.PostCreationForm;
 import com.slackernews.model.User;
-import com.slackernews.model.UserCreationForm;
 import com.slackernews.repository.IPostRepository;
 import com.slackernews.service.Interface.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +48,11 @@ public class PostService implements IPostService {
             post.setURL(url);
         }
 
+        return postRepository.save(post);
+    }
+
+    @Override
+    public Post updatePostInfo(Post post) {
         return postRepository.save(post);
     }
 }

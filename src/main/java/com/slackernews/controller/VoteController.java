@@ -27,7 +27,7 @@ public class VoteController {
     }
 
     //TODO: handle errors with a reasonable JSON reply, not an error
-    @RequestMapping(value="/post/vote")
+    @RequestMapping(value="/vote/post")
     public String upvotePost(@RequestParam("id") int id) {
         Post post = postService.getPostById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
         int currentPoints = post.getPoints();
@@ -37,7 +37,7 @@ public class VoteController {
     }
 
     //TODO: handle errors with a reasonable JSON reply, not an error
-    @RequestMapping(value="/comment/vote")
+    @RequestMapping(value="/vote/comment")
     public String upvoteComment(@RequestParam("id") int id) {
         Comment comment = commentService.getCommentById(id).orElseThrow(() -> new NoSuchElementException("Comment not found"));
         int currentPoints = comment.getPoints();

@@ -35,16 +35,16 @@ public class Application {
             log.info("-------------------------------");
             for (Post post : postRepository.findAll()) {
                 log.info(post.toString());
+                log.info(post.getId().toString());
             }
             log.info("");
 
             // fetch an individual post by Id
-            Post post = postRepository.findOne(1);
-            log.info("Customer found with findOne(1):");
+            Post post = postRepository.findOne(2);
+            log.info("Customer found with findOne(2):");
             log.info("--------------------------------");
             log.info(post.toString());
             log.info("");
         };
     }
-
 }

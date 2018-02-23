@@ -3,7 +3,8 @@ package com.slackernews.model;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity // This tells Hibernate to make a table out of this class
+// Need a custom name, because you can't have a table named 'user' in postgres
+@Entity(name="user_entity")
 public class User {
     private Integer id;
     private String email;
